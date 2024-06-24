@@ -1,5 +1,5 @@
 ---
-title: "Homework 1 - STAT40830"
+title: "Homework 1 (STAT40830)"
 author: Padraig Lafferty - 23211114
 date: today
 editor: visual
