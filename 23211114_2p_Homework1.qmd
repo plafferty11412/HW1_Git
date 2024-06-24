@@ -1,0 +1,81 @@
+---
+title: "Homework 1 - STAT40830"
+author: Padraig Lafferty - 23211114
+date: today
+editor: visual
+format: pdf
+execute: 
+  eval: true
+  echo: false
+  message: false
+---
+
+## Introduction
+
+```{r}
+#| label: Loading the Data
+# Loading the dataset here
+data("USArrests")
+```
+
+The dataset used in this analysis is called *USArrests*, which comes from the datasets package in R. This dataset contains statistics on arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. Additionally, it provides the percentage of the population living in urban areas. The dataset is displayed below, showcasing the first 6 rows for reference:
+
+```{r}
+#| label: Introduction 
+# Print first 6 rows of the data here
+head(USArrests)
+```
+
+\newpage
+
+## Summary
+
+In this section, we provide a numerical summary of the *USArrests* dataset to give a concise overview of its main characteristics. Below, we present the summary statistics for each of these variables, including the minimum, first quartile, median, mean, third quartile, and maximum values.
+
+```{r}
+#| label: Summary
+#Summary statistics for USArrests  
+summary(USArrests)
+```
+
+The summary statistics of the *USArrests* dataset show a range of arrest rates per 100,000 residents for murder (0.8 to 17.4), assault (45 to 337), and rape (7.3 to 46), as well as the percentage of the urban population (32% to 91%), with mean values indicating higher rates of assault compared to murder and rape, and an average urban population percentage of approximately 65.54%.
+
+\newpage
+
+## 
+
+## Visualisation
+
+In this section, we visualise the relationship between the two variables:
+
+-   UrbanPop
+-   Rape
+
+The scatter plot illustrates the relationship between the percentage of the urban population and the rate of rape arrests per 100,000 residents across the 50 US states in 1973.
+
+```{r}
+#| label: packages
+library(ggplot2)
+```
+
+```{r}
+#| label: Visualisation
+#| fig-cap: "Scatter Plot of UrbanPop vs. Rape"
+#| fig-width: 10
+#| fig-height: 7
+#| fig-cap-location: bottom
+
+# Scatter plot of UrbanPop vs. Rape
+ggplot(USArrests, aes(x = UrbanPop, y = Rape)) +
+  geom_point(color = "red", size = 2) +  # color and point size
+  labs(title = "UrbanPop vs. Rape", 
+       x = "Urban Population (%)", y = "Rape") + #labels
+  theme_minimal() +  # minimal theme
+  theme(plot.title = element_text(face = "bold", size = 14, hjust = 0.5),  # center and alter title
+        axis.title = element_text(face = "bold", size = 10),  # alter axis labels appearance
+        axis.text = element_text(size = 8))  # alter axis text appearance
+
+
+```
+
+In this visualization, it's evident that there's a **clear positive relationship** between UrbanPop and Rape in the *USArrests* dataset. As the percentage of the urban population increases, so does the rate of rape arrests per 100,000 residents.
